@@ -5,6 +5,7 @@ import 'package:homescreen2/pages/basic_details.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:homescreen2/pages/RoundedButton.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key}) : super(key: key);
@@ -14,16 +15,36 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-  int _Counter = 20;
-  late Timer _timer;
-  @override
-  void initState() {
+  int secondsRemaining = 10;
+  bool enableResend = false;
+  Timer? timer;
+  initState() {
     super.initState();
     startTimer();
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (_) {
+      if (secondsRemaining != 0) {
+        setState(() {
+          secondsRemaining--;
+        });
+      } else {
+        setState(() {
+          enableResend = true;
+        });
+      }
+    });
   }
 
+  int _Counter = 10;
+  late Timer _timer;
+  @override
+  // void initState() {
+  //   super.initState();
+  //   startTimer();
+  // }
+
   void startTimer() {
-    _Counter = 20;
+    _Counter = 10;
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
@@ -102,16 +123,11 @@ class _OtpScreenState extends State<OtpScreen> {
                   // SizedBox(
                   //   height: 5,
                   // ),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(
-                        () {
-                          resetTimer();
-                        },
-                      );
-                    },
-                    child: Text("Resend OTP"),
+                  FlatButton(
+                    child: Text('Resend Code'),
+                    onPressed: enableResend ? _resendCode : null,
                   ),
+
                   SizedBox(
                     height: 32,
                   ),
@@ -170,5 +186,16 @@ class _OtpScreenState extends State<OtpScreen> {
     setState(() {
       _timer.cancel();
     });
+  }
+
+  void _resendCode() {
+    //other code here
+    setState(
+      () {
+        startTimer();
+        secondsRemaining = 10;
+        enableResend = false;
+      },
+    );
   }
 }

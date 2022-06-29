@@ -165,7 +165,7 @@ class _NameofService4State extends State<NameofService4> {
                     ),
                   ),
                   Text(
-                    "M1978 participants",
+                    "1978 participants",
                     style: GoogleFonts.heebo(
                       fontSize: 16,
                       color: Color.fromRGBO(79, 79, 79, 1),

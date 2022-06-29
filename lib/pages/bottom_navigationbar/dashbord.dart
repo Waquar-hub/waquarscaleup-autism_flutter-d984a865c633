@@ -29,8 +29,9 @@ class _DashBoardState extends State<DashBoard> {
   ];
 
   List<PreferredSize> bar = [
+    //Home AppBar
     PreferredSize(
-      preferredSize: Size.fromHeight(10),
+      preferredSize: Size.fromHeight(40),
       child: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -70,6 +71,7 @@ class _DashBoardState extends State<DashBoard> {
         ],
       ),
     ),
+    //Service AppBar
     PreferredSize(
       preferredSize: Size.fromHeight(60),
       child: AppBar(
@@ -101,25 +103,66 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ),
     ),
+    //My Account AppBar
     PreferredSize(
-      preferredSize: Size.fromHeight(60),
+      preferredSize: Size.fromHeight(200),
       child: AppBar(
-        bottomOpacity: 0.0,
+        // bottomOpacity: 0.0,
+        automaticallyImplyLeading: false,
         elevation: 0.0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Text(
-          "My account",
-          style: GoogleFonts.heebo(
-            fontSize: 20,
-            color: Color.fromRGBO(51, 51, 51, 1),
-            fontWeight: FontWeight.w500,
+        backgroundColor: Color.fromRGBO(142, 196, 225, 1),
+        // centerTitle: true,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_back_outlined,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                    SizedBox(
+                      width: 91,
+                    ),
+                    Text(
+                      "My Account",
+                      style: GoogleFonts.heebo(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                // SizedBox(
+                //   height: 12,
+                // ),
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/Ellipse 817.png",
+                      width: 64,
+                      height: 64,
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: Icon(
+        //     Icons.arrow_back,
+        //     color: Colors.white,
+        //   ),
+        //   onPressed: () {},
+        // ),
       ),
     ),
   ];
@@ -128,10 +171,11 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: bar[_selectedIndex],
-      ),
+      // appBar: PreferredSize(
+      //   preferredSize: Size.fromHeight(60),
+      //   child: bar[_selectedIndex],
+      // ),
+      appBar: bar[_selectedIndex],
       bottomNavigationBar: SizedBox(
         height: 48,
         child: BottomAppBar(

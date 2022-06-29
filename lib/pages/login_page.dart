@@ -3,6 +3,7 @@ import 'package:homescreen2/pages/opt_page.dart';
 import 'package:sign_button/constants.dart';
 import 'package:sign_button/create_button.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:homescreen2/pages/RoundedButton.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -84,34 +85,15 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       height: 48,
                       width: double.infinity,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                            ),
-                          ),
-                          backgroundColor: MaterialStateProperty.all(
-                            Color.fromRGBO(142, 196, 225, 1),
+                      child: RoundedButton(
+                        colour: Color.fromRGBO(142, 196, 225, 1),
+                        title: "Log In",
+                        onPress: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const OtpScreen(),
                           ),
                         ),
-                        child: Text(
-                          "Verify",
-                          style: GoogleFonts.heebo(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const OtpScreen(),
-                            ),
-                          );
-                        },
                       ),
                     ),
                     Row(

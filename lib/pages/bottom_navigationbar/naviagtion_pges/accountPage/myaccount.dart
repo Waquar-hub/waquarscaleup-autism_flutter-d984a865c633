@@ -10,6 +10,8 @@ class MyAccountTab extends StatefulWidget {
 class _MyAccountTabState extends State<MyAccountTab> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white);
+    return Scaffold(
+      backgroundColor: Colors.white,
+    );
   }
 }

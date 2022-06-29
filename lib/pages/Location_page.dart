@@ -47,13 +47,13 @@ class _LocationState extends State<Location> {
                 height: 400,
               ),
               Container(
+                height: 200,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
                   ),
                 ),
-                height: 200,
                 padding: EdgeInsets.fromLTRB(16.0, 10.0, 25.0, 10.0),
                 child: Column(
                   children: [

@@ -24,6 +24,7 @@ class _CenterDetailsState extends State<CenterDetails> {
   final picker = ImagePicker();
   String? gender;
   Color greycolor = Color(0xff939393);
+  var fromTime = 'From';
 
   Future getImagefromcamera() async {
     var image = await picker.pickImage(source: ImageSource.camera);
@@ -44,6 +45,7 @@ class _CenterDetailsState extends State<CenterDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final maxLines = 5;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 50),
@@ -54,7 +56,7 @@ class _CenterDetailsState extends State<CenterDetails> {
           automaticallyImplyLeading: false,
           title: Center(
             child: Text(
-              "Center Details",
+              "Centre Details",
               style: GoogleFonts.heebo(
                 fontSize: 32,
                 color: Color.fromRGBO(51, 51, 51, 1),
@@ -225,7 +227,7 @@ class _CenterDetailsState extends State<CenterDetails> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Center Name",
+                  "Centre Name",
                   style: GoogleFonts.heebo(
                     fontSize: 14,
                     color: Color.fromRGBO(51, 51, 51, 1),
@@ -236,8 +238,14 @@ class _CenterDetailsState extends State<CenterDetails> {
               SizedBox(height: 5),
               TextField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Enter Center Name"),
+                  border: OutlineInputBorder(),
+                  hintText: "Enter Centre Name",
+                  hintStyle: GoogleFonts.heebo(
+                    color: Color.fromRGBO(130, 130, 130, 1),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 25,
@@ -245,7 +253,7 @@ class _CenterDetailsState extends State<CenterDetails> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Center Type",
+                  "Centre Type",
                   style: GoogleFonts.heebo(
                     fontSize: 14,
                     color: Color.fromRGBO(51, 51, 51, 1),
@@ -267,27 +275,43 @@ class _CenterDetailsState extends State<CenterDetails> {
                   child: DropDown(
                     customWidgets: [
                       Text(
-                        "center type 1",
-                        style: TextStyle(color: greycolor, fontSize: 14),
+                        "centre type 1",
+                        style: GoogleFonts.heebo(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       Text(
-                        "center type 2",
-                        style: TextStyle(color: greycolor, fontSize: 14),
+                        "centre type 2",
+                        style: GoogleFonts.heebo(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       Text(
-                        "center type 3",
-                        style: TextStyle(color: greycolor, fontSize: 14),
+                        "centre type 3",
+                        style: GoogleFonts.heebo(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       Text(
-                        "center type 4",
-                        style: TextStyle(color: greycolor, fontSize: 14),
+                        "centre type 4",
+                        style: GoogleFonts.heebo(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ],
                     items: [
-                      "center type 1",
-                      "center type 2",
-                      "center type 3",
-                      "center type 4"
+                      "centre type 1",
+                      "centre type 2",
+                      "centre type 3",
+                      "centre type 4"
                     ],
                     showUnderline: false,
                     onChanged: (val) {
@@ -296,9 +320,11 @@ class _CenterDetailsState extends State<CenterDetails> {
                       });
                     },
                     hint: Text(
-                      "Select center type",
-                      style: TextStyle(
-                        fontSize: 16,
+                      "Select centre type",
+                      style: GoogleFonts.heebo(
+                        color: Color.fromRGBO(130, 130, 130, 1),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
@@ -325,7 +351,12 @@ class _CenterDetailsState extends State<CenterDetails> {
                       color: Color.fromRGBO(189, 189, 189, 1),
                     ),
                   ),
-                  hintText: "Add location of the center",
+                  hintText: "Add location of the centre",
+                  hintStyle: GoogleFonts.heebo(
+                    color: Color.fromRGBO(130, 130, 130, 1),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
                   suffixIcon: IconButton(
                     onPressed: () => _controller.clear(),
                     icon: Icon(Icons.location_on_outlined),
@@ -520,25 +551,35 @@ class _CenterDetailsState extends State<CenterDetails> {
               Wrap(
                 spacing: 16,
                 children: [
-                  Container(
-                    width: 172,
-                    child: TextField(
-                      // keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: new BorderSide(
-                            color: Color.fromRGBO(189, 189, 189, 1),
+                  InkWell(
+                    onTap: () {
+                      _selectTime(context);
+                    },
+                    child: Container(
+                      width: 172,
+                      child: Text(fromTime
+                          // keyboardType: TextInputType.number,
+                          // decoration: InputDecoration(
+                          //   border: OutlineInputBorder(
+                          //     borderSide: new BorderSide(
+                          //       color: Color.fromRGBO(189, 189, 189, 1),
+                          //     ),
+                          //   ),
+                          //   hintText: "From",
+                          //   hintStyle: GoogleFonts.heebo(
+                          //     color: Color.fromRGBO(130, 130, 130, 1),
+                          //     fontSize: 14,
+                          //     fontWeight: FontWeight.w400,
+                          //   ),
+                          //   suffixIcon: IconButton(
+                          //     onPressed: () {
+                          //       _selectTime(context);
+                          //     },
+                          //     icon: Icon(Icons.access_time),
+                          //     iconSize: 22,
+                          // ),
+                          // ),
                           ),
-                        ),
-                        hintText: "From",
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            _selectTime(context);
-                          },
-                          icon: Icon(Icons.access_time),
-                          iconSize: 22,
-                        ),
-                      ),
                     ),
                   ),
                   Container(
@@ -552,11 +593,18 @@ class _CenterDetailsState extends State<CenterDetails> {
                           ),
                         ),
                         hintText: "To",
+                        hintStyle: GoogleFonts.heebo(
+                          color: Color.fromRGBO(130, 130, 130, 1),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
                         suffixIcon: IconButton(
                           onPressed: () {
                             _selectTime(context);
                           },
-                          icon: Icon(Icons.access_time),
+                          icon: Icon(
+                            Icons.access_time,
+                          ),
                           iconSize: 22,
                         ),
                       ),
@@ -581,15 +629,24 @@ class _CenterDetailsState extends State<CenterDetails> {
               SizedBox(
                 height: 5,
               ),
-              TextFormField(
-                maxLines: 10,
-                textAlign: TextAlign.start,
-                // expands: true,
+              Container(
+                height: maxLines * 32,
+                child: TextFormField(
+                  maxLines: maxLines,
+                  textAlign: TextAlign.start,
+                  // expands: true,
 
-                decoration: InputDecoration(
+                  decoration: InputDecoration(
                     // contentPadding: EdgeInsets.symmetric(vertical: 64),
                     border: OutlineInputBorder(),
-                    hintText: "Please write some about your center here...."),
+                    hintText: "Please write some about your center here....",
+                    hintStyle: GoogleFonts.heebo(
+                      color: Color.fromRGBO(130, 130, 130, 1),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
               ),
               SizedBox(
                 height: 24,
@@ -640,9 +697,12 @@ class _CenterDetailsState extends State<CenterDetails> {
       initialEntryMode: TimePickerEntryMode.dial,
     );
     if (timeOfDay != null && timeOfDay != selectedTime) {
-      setState(() {
-        selectedTime = timeOfDay;
-      });
+      setState(
+        () {
+          selectedTime = timeOfDay;
+          fromTime = timeOfDay.toString();
+        },
+      );
     }
   }
 }

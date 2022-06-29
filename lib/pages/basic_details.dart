@@ -143,7 +143,7 @@ class _BasicDetailsState extends State<BasicDetails> {
                     border: OutlineInputBorder(),
                     hintText: "Enter your full name",
                     hintStyle: GoogleFonts.heebo(
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Color.fromRGBO(130, 130, 130, 1),
                       fontWeight: FontWeight.w400,
                     ),
